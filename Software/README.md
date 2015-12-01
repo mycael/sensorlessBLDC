@@ -12,7 +12,7 @@ This folder contains the dsPIC firmware. License agreement below :
 This software is based on a Microchip software. The Microchip Licence
 is applicable. As this software is distributed in a non commercial use
 it can bee freely modify or/and redistributed (see section :
-About Us » Legal Information » Copyright Usage Guidelines, on the
+About Us Â» Legal Information Â» Copyright Usage Guidelines, on the
 Microchip website).
 
 Microchip Technology Inc. (Microchip) licenses this software to you
@@ -31,10 +31,10 @@ PROCUREMENT OF SUBSTITUTE GOODS, TECHNOLOGY OR SERVICES, ANY CLAIMS
 BY THIRD PARTIES (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF),
 ANY CLAIMS FOR INDEMNITY OR CONTRIBUTION, OR OTHER SIMILAR COSTS.
 
-REVISION HISTORY:
-----------------------------------------------------------------------
+### REVISION HISTORY:
+
 Author            |   Date      |   Comments on this revision
-----------------------------------------------------------------------
-Reston Condit     | Jan 7, 2007 |  Intial version
+------------------|-------------|---------------------------------------
+Reston Condit     | Jan 7, 2007 |  Intial version from Microchip
 Michael Guarisco  | Nov, 2015   |  Modified version for dsPIC30F3011 and XC16
 Michael Guarisco  | Dec 1, 2015 |      
