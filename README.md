@@ -1,5 +1,6 @@
 # Sensorless Controller for BLDC Motor
 Hardware and Software description for a sensorless BLDC Controller
+
 **Please be careful**: _the controller is not yet fully tested and still requires development._
 
 Hardware is designed with Altium Designer, source files are available in "Hardware" folder.
