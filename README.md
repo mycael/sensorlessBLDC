@@ -21,9 +21,9 @@ ___
 
 ### Input PWM signal (speed setpoint) :
 
-![Alt text](/_pictures/chrono1.png?raw=true)
+![Alt text](/Documentation/chrono1.png?raw=true)
 
-![Alt text](/_pictures/equ1.gif?raw=true)
+![Alt text](/Documentation/equ1.gif?raw=true)
 
 In the equation above, *Speed* and *MaxMotorSpeed* are given in RPM (Revolutions per Minute), *PulseWidth* and *MaxPulseWidth* in µs (microseconde).
 
@@ -39,10 +39,10 @@ ___
 
 -	Top layer :
 
-![Alt text](/_pictures/toplayer.png?raw=true)
+![Alt text](/Documentation/toplayer.png?raw=true)
 -	Bottom layer :
 
-![Alt text](/_pictures/bottomlayer.png?raw=true)
+![Alt text](/Documentation/bottomlayer.png?raw=true)
 - Dimensions : 
 
-![Alt text](/_pictures/dimensions.png?raw=true)
+![Alt text](/Documentation/dimensions.png?raw=true)
