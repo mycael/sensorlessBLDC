@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+  <executable name="dist/default/production/sensorlessBLDC_AN1083.X.production.elf">
+    <memory name="data">
+      <units>bytes</units>
+      <length>1024</length>
+      <used>386</used>
+      <free>638</free>
+    </memory>
+    <memory name="program">
+      <units>bytes</units>
+      <length>24192</length>
+      <used>6447</used>
+      <free>17745</free>
+    </memory>
+  </executable>
+</project>
