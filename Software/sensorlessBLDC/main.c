@@ -1,6 +1,5 @@
 /**********************************************************************
 * Project Name :   sensorlessBLDC
-* FileName:        main.c
 * Dependencies:    general.h
 *                  init_PWM.h
 *                  init_ADC.h
@@ -53,7 +52,6 @@
 #include "IIR_Filter.h"
 #include "BEMF_filter.h"
 #include "Motor_isr.h"
-//#include "slow_event.h"
 #include "medium_event.h"
 #include "dsp.h"
 #include "init_IC.h"
@@ -62,7 +60,7 @@
 
 // Setup Configuration bits
 // FOSC
-#pragma config FOSFPR = XT_PLL16        // Oscillator (XT w/PLL 16x)
+#pragma config FOSFPR = XT_PLL8        // Oscillator (XT w/PLL 16x)
 #pragma config FCKSMEN = CSW_FSCM_OFF   // Clock Switching and Monitor (Sw Disabled, Mon Disabled)
 
 // FWDT
@@ -148,8 +146,6 @@ int main ( void )
  	{
 		if(ControlFlags.MediumEventFlag)
 			MediumEvent();				// execute start-up ramp or speed control loop
-		//if(ControlFlags.SlowEventFlag)
-		//	SlowEvent();				// check buttons and update LCD
 	}
 }
 

@@ -3,8 +3,11 @@
 // processor frequency using external 7.3728 MHz crystal with 16x PLL
 //#define	FCY		29491200UL
 
-// processor frequency using internal 7.37 MHz FRC 16x PLL
-#define	FCY		29480000UL
+// processor frequency using internal 7.37 MHz FRC with 16x PLL
+//#define	FCY		29480000UL
+
+// processor frequency using external 7.3728 MHz crystal with 8x PLL
+#define	FCY		14745600UL
 
 // baudrate for USART module
 #define BAUD 115200
