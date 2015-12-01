@@ -8,8 +8,11 @@ Characteristics:
 
 3D view of the BLDC Controller: 
 -	Top layer :
+
 ![Alt text](/toplayer.png?raw=true)
 -	Bottom layer :
+
 ![Alt text](/bottomlayer.png?raw=true)
 - Dimensions : 
+
 ![Alt text](/dimensions.png?raw=true)
