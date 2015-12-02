@@ -9,7 +9,7 @@ The Controller is currently tested on Turnigy D2836/8 1100kv motor.
 
 ___
 
-## 1. General Characteristics:
+## 1. General Characteristics
 -	Current: 120A
 -	Voltage: 10 to 20V (3S, 4S, and 5S Lipo) 
 -	Power dissipation without heatsink : 300W
@@ -19,7 +19,12 @@ ___
 
 ## 2. Software Specifications
 
+* Firmware based on dsPIC30F3011
+* Cycle frequency : 29 491 200 Hz (7.3728 MHz crystal with PLL 16x)
+
 ### Input PWM signal (speed setpoint) :
+
+Crystal use instead of internal oscillator (as it's generally made on ESC) ensures a high precision reading of the speed setpoint coming from the PWM signal. 
 
 ![Alt text](/Documentation/chrono1.png?raw=true)
 
