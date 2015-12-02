@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project>
-  <executable name="dist/default/production/sensorlessBLDC_v0.5.production.elf">
+  <executable name="dist/default/production/sensorlessBLDC.production.elf">
     <memory name="data">
       <units>bytes</units>
       <length>1024</length>
@@ -11,8 +11,8 @@
     <memory name="program">
       <units>bytes</units>
       <length>24192</length>
-      <used>8025</used>
-      <free>16167</free>
+      <used>8031</used>
+      <free>16161</free>
     </memory>
   </executable>
 </project>
