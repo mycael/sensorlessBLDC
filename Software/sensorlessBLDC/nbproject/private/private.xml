@@ -2,19 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-<<<<<<< HEAD
-            <file>file:/D:/GitHub/sensorlessBLDC/Software/sensorlessBLDC/general.h</file>
-            <file>file:/D:/GitHub/sensorlessBLDC/Software/sensorlessBLDC/Tuning.c</file>
-            <file>file:/D:/GitHub/sensorlessBLDC/Software/sensorlessBLDC/main.c</file>
-            <file>file:/D:/GitHub/sensorlessBLDC/Software/sensorlessBLDC/Motor_isr.h</file>
-            <file>file:/D:/GitHub/sensorlessBLDC/Software/sensorlessBLDC/medium_event.c</file>
-            <file>file:/D:/GitHub/sensorlessBLDC/Software/sensorlessBLDC/init_ADC.c</file>
-            <file>file:/D:/GitHub/sensorlessBLDC/Software/sensorlessBLDC/Motor_isr.c</file>
-            <file>file:/D:/GitHub/sensorlessBLDC/Software/sensorlessBLDC/init_PWM.c</file>
-=======
-            <file>file:/D:/GitHub/sensorlessBLDC/Software/sensorlessBLDC/main.c</file>
->>>>>>> refs/remotes/origin/master
-        </group>
+        <group/>
     </open-files>
 </project-private>

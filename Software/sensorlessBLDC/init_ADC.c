@@ -33,6 +33,15 @@ void Init_ADC( void )
 	// Interrupt frequency: ~49 kHz
     
 	ADCON3 = 0x0C09; 
+    
+    /* Set Samples and bit conversion time */
+	//                                  |       |
+	//                     (sample time)v       v(conversion time)
+	/* Interrupt period: 5 channels * 12Tad + 12Tad  (where Tad = Tcy/2 *(ADCS<5:0> + 1))" */
+	// 						5 * 24 * 1/14745600 * 1/2 * (4 + 1) = 2.0345e-5
+	// Interrupt frequency: ~49 kHz
+    
+	//ADCON3 = 0x0C04; 
         	
 	/* scan specified channels */
 	ADCSSL = ADCSSL_LOW_SPEED;  // Scan all 5 channels

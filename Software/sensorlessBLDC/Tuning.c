@@ -33,15 +33,15 @@ struct parameter_limits
     };
 
 // Hard code motor parameters here 
-volatile unsigned int Lock1Demand = 22;			// % demand for first lock position
-volatile unsigned int Lock2Demand = 22;			// % demand for second lock position
-volatile unsigned int Lock1Duration = 400;		// Lock duration in 1ms increments
-volatile unsigned int Lock2Duration = 400;		// Lock duration in 1ms increments
-volatile unsigned int RampStartDemand = 47;		// % demand at the beginning of the open-loop starting ramp
-volatile unsigned int RampEndDemand = 52;		// % demand at the end of the open-loop starting ramp
-volatile unsigned int RampDuration = 1000;		// Ramp duration in 1ms increments
-volatile unsigned int RampStartSpeed = 150;		// Speed (in RPM) at the beginning of the open-loop starting ramp
-volatile unsigned int RampEndSpeed = 2100;		// Speed (in RPM) at the end of the open-loop starting ramp
+volatile unsigned int Lock1Demand = 30;			// % demand for first lock position
+volatile unsigned int Lock2Demand = 20;			// % demand for second lock position
+volatile unsigned int Lock1Duration = 300;		// Lock duration in 1ms increments
+volatile unsigned int Lock2Duration = 100;		// Lock duration in 1ms increments
+volatile unsigned int RampStartDemand = 54;		// % demand at the beginning of the open-loop starting ramp
+volatile unsigned int RampEndDemand = 60;		// % demand at the end of the open-loop starting ramp
+volatile unsigned int RampDuration = 450;		// Ramp duration in 1ms increments
+volatile unsigned int RampStartSpeed = 200;		// Speed (in RPM) at the beginning of the open-loop starting ramp
+volatile unsigned int RampEndSpeed = 2200;		// Speed (in RPM) at the end of the open-loop starting ramp
 volatile unsigned int MaxMotorSpeed = 8000;     // Maximum speed of the motor - used to normalize the potentiometer speed adjustment
 volatile unsigned int BlankingCountInit = 4;	// The number of ADC samples "ignored" after commutating the motor windings
 volatile unsigned int SpeedControl_P = 8000;	// The P term for the PI speed control loop
@@ -49,7 +49,7 @@ volatile unsigned int SpeedControl_I = 1800;		// The I term for the PI speed con
 volatile unsigned int SpeedControl_D = 11000;	// The I term for the PI speed control loop
 volatile unsigned int PhaseAdvanceStart = 10000;	// The RPM at which point phase advance begins to be added
 volatile unsigned int PhaseAdvanceSlope = 0; 	// The number of degrees of phase advance per 1000 RPM (after the phase advance start speed is reached) 
-volatile unsigned int InitialDemand = 52;		// % demand immediately after the starting ramp is completed.
+volatile unsigned int InitialDemand = 40;		// % demand immediately after the starting ramp is completed.
 volatile unsigned int NoOfMotorPoles = 14;		// Number of motor poles (not pole-pairs)
 volatile unsigned int CrossOverERPS = 250; 		// low speed to high speed (and vice versa) crossover speed in electrical revs per second
 volatile unsigned int NumOfTimer1TimeOuts = 10;  // Defines the number of Timer 1 timeouts that will sequentially occur before the motor shuts down

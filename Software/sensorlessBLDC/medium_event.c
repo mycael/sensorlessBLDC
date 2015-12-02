@@ -41,7 +41,7 @@
 #include "general.h"
 #include "Motor_isr.h"
 #include "dsp.h"
-#include "Tuning.h"
+#include "tuning.h"
 #include "hardware.h"
 
 unsigned int DegreesAdvanced;   // Degrees of Phase advance based on speed

@@ -3,7 +3,7 @@
 #include "IIR_Filter.h"
 #include "BEMF_filter.h"
 #include "Hall_States.h"
-#include "Tuning.h"
+#include "tuning.h"
 #include "Motor_isr.h"
 #include "snapshot.h"
 
@@ -57,7 +57,7 @@ unsigned long AccConsumption = 0;
   Inputs:        None
   Returns:       None
 -----------------------------------------------------------------------*/
-void __attribute__((__interrupt__)) _ADCInterrupt( void )   // occurs at a rate of 81.920 kHz
+void __attribute__((__interrupt__, no_auto_psv)) _ADCInterrupt( void )   // occurs at a rate of 81.920 kHz
 {
 	int i;
 	/* reset ADC interrupt flag */
@@ -127,7 +127,7 @@ void __attribute__((__interrupt__)) _ADCInterrupt( void )   // occurs at a rate 
   Inputs:        None
   Returns:       None
 -----------------------------------------------------------------------*/
-void __attribute__((__interrupt__)) _T1Interrupt( void ) 
+void __attribute__((__interrupt__, no_auto_psv)) _T1Interrupt( void ) 
 {
 	IFS0bits.T1IF = 0;
 	if (Timer1TimeoutCntr++ >= NumOfTimer1TimeOuts)  // When Timer 1 overflows the algorithm is lost
@@ -143,7 +143,7 @@ void __attribute__((__interrupt__)) _T1Interrupt( void )
   Inputs:        None
   Returns:       None
 -----------------------------------------------------------------------*/
-void __attribute__((__interrupt__)) _T4Interrupt( void )  // TMR 4 is never turned on in Hall Mode
+void __attribute__((__interrupt__, no_auto_psv)) _T4Interrupt( void )  // TMR 2 is never turned on in Hall Mode
 {
 	TMR4 = 0;			   			// clear TMR4
 	IFS1bits.T4IF = 0;
@@ -162,7 +162,7 @@ void __attribute__((__interrupt__)) _T4Interrupt( void )  // TMR 4 is never turn
   Inputs:        None
   Returns:       None
 -----------------------------------------------------------------------*/
-void __attribute__((__interrupt__)) _T5Interrupt( void )  // TMR 5 is never turned on in Hall Mode
+void __attribute__((__interrupt__, no_auto_psv)) _T5Interrupt( void )  // TMR 3 is never turned on in Hall Mode
 {
 	T5CONbits.TON = 0;     			// turn off TMR5
 	TMR5 = 0;
@@ -186,7 +186,7 @@ void __attribute__((__interrupt__)) _T5Interrupt( void )  // TMR 5 is never turn
   Returns:       None
 -----------------------------------------------------------------------*/
 
-void __attribute__((__interrupt__)) _PWMInterrupt( void )  // Occurs every 50us or at a rate of 20kHz
+void __attribute__((__interrupt__, no_auto_psv)) _PWMInterrupt( void )  // Occurs every 50us or at a rate of 20kHz
 {
 	IFS2bits.PWMIF = 0;             // Clear the PWM interrupt flag
     /*
@@ -487,7 +487,7 @@ unsigned int ThirtyDegreeTimeAverage()
 }
 
 
-void __attribute__((__interrupt__)) _IC1Interrupt( void )
+void __attribute__((__interrupt__, no_auto_psv)) _IC1Interrupt( void )
 {
     IFS0bits.IC1IF = 0;     // Reset interrupt flag
     TMR2 = 0;
@@ -506,21 +506,24 @@ void __attribute__((__interrupt__)) _IC1Interrupt( void )
         /* Fcy at 29491200 Hz                                                 */
         /**********************************************************************/
         
-        SpeedReference = (((long)IC1BUF)*((long)MaxMotorSpeed))/((long)55296); //  54780
+        //SpeedReference = (((long)IC1BUF)*((long)MaxMotorSpeed))/((long)55296); 
+        //SpeedReference = (((long)IC1BUF)*((long)MaxMotorSpeed))/((long)27648); 
+        SpeedReference = (long)(((float)IC1BUF) * SPEED_REFERENCE_SCALE_FACTOR);
         if (SpeedReference < (START_MOTOR_VALUE-20))
         {
-            SpeedReference = (START_MOTOR_VALUE-20);
-            if((++MotorOffCounter >= 30) && (RunMode == SENSORLESS_RUNNING)) //if((++MotorOffCounter == 1000) && ((RunMode == SENSORLESS_INIT) || (RunMode == SENSORLESS_START) || (RunMode == SENSORLESS_RUNNING)))
+            //SpeedReference = (START_MOTOR_VALUE-20);
+            if((++MotorOffCounter >= 10) && ((RunMode == SENSORLESS_RUNNING) || (RunMode == SENSORLESS_START) || (RunMode == SENSORLESS_INIT))) //if((++MotorOffCounter == 1000) && ((RunMode == SENSORLESS_INIT) || (RunMode == SENSORLESS_START) || (RunMode == SENSORLESS_RUNNING)))
             {
                 RunMode = MOTOR_OFF;
                 ControlFlags.RunMotor = 0;
                 SensorlessStartState = 0;
                 LED = 0;
             }
+            MotorOnCounter = 0;
         }       
         else if ((SpeedReference >= (START_MOTOR_VALUE-20))&&(SpeedReference < (START_MOTOR_VALUE+20)))
         {
-            if((++MotorOnCounter >= 30) && (RunMode == MOTOR_OFF))
+            if((++MotorOnCounter >= 10) && (RunMode == MOTOR_OFF))
             {
                 LED = 1;
                 RunMode = SENSORLESS_INIT;  

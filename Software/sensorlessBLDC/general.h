@@ -1,13 +1,15 @@
 #include <xc.h>
 
 // processor frequency using external 7.3728 MHz crystal with 16x PLL
-//#define	FCY		29491200UL
-
-// processor frequency using internal 7.37 MHz FRC with 16x PLL
-//#define	FCY		29480000UL
+#define	FCY		29491200UL
 
 // processor frequency using external 7.3728 MHz crystal with 8x PLL
-#define	FCY		14745600UL
+//#define	FCY		14745600UL
+
+// processor frequency using internal 7.37 MHz FRC 16x PLL
+//#define	FCY		29480000UL
+
+
 
 // baudrate for USART module
 #define BAUD 115200
@@ -18,8 +20,9 @@
 // FULL_DUTY the equivalent of 100% duty cycle
 #define	FULL_DUTY (2*FCY/FPWM)
 
-// Timer 1,2, and 3 prescaler
+// Timer 1 and 2 prescaler
 #define TMR1_PRESCALER 8UL
+#define TMR2_PRESCALER 8UL
 
 // Specify the maximum number of degrees of phase advance
 #define MAX_PHASE_ADVANCE 30
@@ -59,5 +62,10 @@
 #define PID_SPEED_LOOP
 
 
+#define MAX_MOTOR_SPEED     8000.0    // rpm
 #define START_MOTOR_VALUE	2200	// rpm
 #define STOP_MOTOR_VALUE	1500	// rpm
+
+#define MAX_PULSE_WIDTH     0.015   // sec
+
+#define SPEED_REFERENCE_SCALE_FACTOR     MAX_MOTOR_SPEED/(MAX_PULSE_WIDTH*FCY/TMR2_PRESCALER)

@@ -15,7 +15,7 @@
 * SOFTWARE LICENSE AGREEMENT:
 * This software is based on a Microchip software. The Microchip Licence
 * is applicable. As this software is distributed in a non commercial use
-* it can bee freely modify or redistributed (see section :
+* it can bee freely modify or/and redistributed (see section :
 * About Us » Legal Information » Copyright Usage Guidelines, on the
 * Microchip website).
 * 
@@ -52,13 +52,16 @@
 #include "IIR_Filter.h"
 #include "BEMF_filter.h"
 #include "Motor_isr.h"
+//#include "slow_event.h"
 #include "medium_event.h"
 #include "dsp.h"
 #include "init_IC.h"
 
+
+
 // Setup Configuration bits
 // FOSC
-#pragma config FOSFPR = XT_PLL8        // Oscillator (XT w/PLL 16x)
+#pragma config FOSFPR = XT_PLL16        // Oscillator (XT w/PLL 16x)
 #pragma config FCKSMEN = CSW_FSCM_OFF   // Clock Switching and Monitor (Sw Disabled, Mon Disabled)
 
 // FWDT
@@ -108,20 +111,23 @@ int main ( void )
     }
     LED = 0;
     
- 	// Setup Timer1 for 1:8 prescale.  Timer1 is used to measure
+ 	// Timer1 is used to measure
  	// the period between zero crossings.  Enable Timer 1.
- 	T1CON = 0x8010;
+ 	T1CON = 0x8010;   // Setup Timer1 for 1:8 prescale.
+    //T1CON = 0x8000;     // Setup Timer1 for 1:1 prescale.
  	
  	// Timer4 and Timer 5 will be the commutation timers.  They
 	//  have the same prescaler (1:8) as Timer 1.  Turn on Timer 4
 	//  but not Timer 5  
  	T4CON = 0x0010;			// 1:8 prescaler
+    //T4CON = 0x0000;			// 1:1 prescaler
 	TMR4 = 0;				// clear Timer 4
 	IFS1bits.T4IF = 0;		// Disable the Timer 2 interrupt
 	IEC1bits.T4IE = 0;
 	T4CONbits.TON = 1; 		// Turn on Timer 2
 
 	T5CON = 0x0010;			// 1:8 prescaler
+    //T5CON = 0x0000;			// 1:1 prescaler
 	TMR5 = 0;				// clear Timer 3
 	IFS1bits.T5IF = 0;		// Disable the Timer 3 interrupt
 	IEC1bits.T5IE = 0;
@@ -144,6 +150,8 @@ int main ( void )
  	{
 		if(ControlFlags.MediumEventFlag)
 			MediumEvent();				// execute start-up ramp or speed control loop
+		//if(ControlFlags.SlowEventFlag)
+		//	SlowEvent();				// check buttons and update LCD
 	}
 }
 
