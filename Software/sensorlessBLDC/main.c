@@ -56,8 +56,6 @@
 #include "dsp.h"
 #include "init_IC.h"
 
-
-
 // Setup Configuration bits
 // FOSC
 #pragma config FOSFPR = XT_PLL8        // Oscillator (XT w/PLL 16x)
