@@ -3,7 +3,7 @@
 #include "IIR_Filter.h"
 #include "BEMF_filter.h"
 #include "Hall_States.h"
-#include "TuningInterface.h"
+#include "Tuning.h"
 #include "Motor_isr.h"
 #include "snapshot.h"
 
@@ -143,7 +143,7 @@ void __attribute__((__interrupt__)) _T1Interrupt( void )
   Inputs:        None
   Returns:       None
 -----------------------------------------------------------------------*/
-void __attribute__((__interrupt__)) _T4Interrupt( void )  // TMR 2 is never turned on in Hall Mode
+void __attribute__((__interrupt__)) _T4Interrupt( void )  // TMR 4 is never turned on in Hall Mode
 {
 	TMR4 = 0;			   			// clear TMR4
 	IFS1bits.T4IF = 0;
@@ -162,7 +162,7 @@ void __attribute__((__interrupt__)) _T4Interrupt( void )  // TMR 2 is never turn
   Inputs:        None
   Returns:       None
 -----------------------------------------------------------------------*/
-void __attribute__((__interrupt__)) _T5Interrupt( void )  // TMR 3 is never turned on in Hall Mode
+void __attribute__((__interrupt__)) _T5Interrupt( void )  // TMR 5 is never turned on in Hall Mode
 {
 	T5CONbits.TON = 0;     			// turn off TMR5
 	TMR5 = 0;

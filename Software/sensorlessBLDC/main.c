@@ -58,7 +58,7 @@
 
 // Setup Configuration bits
 // FOSC
-#pragma config FOSFPR = XT_PLL16        // Oscillator (XT w/PLL 16x)
+#pragma config FOSFPR = XT_PLL8        // Oscillator (XT w/PLL 16x)
 #pragma config FCKSMEN = CSW_FSCM_OFF   // Clock Switching and Monitor (Sw Disabled, Mon Disabled)
 
 // FWDT
@@ -144,8 +144,6 @@ int main ( void )
  	{
 		if(ControlFlags.MediumEventFlag)
 			MediumEvent();				// execute start-up ramp or speed control loop
-		//if(ControlFlags.SlowEventFlag)
-		//	SlowEvent();				// check buttons and update LCD
 	}
 }
 
