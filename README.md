@@ -24,11 +24,8 @@ ___
 
 ### Input PWM signal (speed setpoint) :
 
-<<<<<<< HEAD
-=======
 Crystal use instead of internal oscillator (as it's generally made on ESC) ensures a high precision reading of the speed setpoint coming from the PWM signal. 
 
->>>>>>> refs/remotes/origin/master
 ![Alt text](/Documentation/chrono1.png?raw=true)
 
 ![Alt text](/Documentation/equ1.gif?raw=true)
