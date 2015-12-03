@@ -51,7 +51,7 @@
 #include "init_ADC.h"
 #include "IIR_Filter.h"
 #include "BEMF_filter.h"
-#include "Motor_isr.h"
+#include "motor_isr.h"
 //#include "slow_event.h"
 #include "medium_event.h"
 #include "dsp.h"
@@ -150,8 +150,6 @@ int main ( void )
  	{
 		if(ControlFlags.MediumEventFlag)
 			MediumEvent();				// execute start-up ramp or speed control loop
-		//if(ControlFlags.SlowEventFlag)
-		//	SlowEvent();				// check buttons and update LCD
 	}
 }
 

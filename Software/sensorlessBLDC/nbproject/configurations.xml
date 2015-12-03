@@ -16,11 +16,8 @@
       <itemPath>general.h</itemPath>
       <itemPath>BEMF_filter.h</itemPath>
       <itemPath>BEMF_filter.s</itemPath>
-      <itemPath>Hall_States.h</itemPath>
       <itemPath>IIRT_Filter.s</itemPath>
       <itemPath>IIR_Filter.h</itemPath>
-      <itemPath>Motor_isr.c</itemPath>
-      <itemPath>Motor_isr.h</itemPath>
       <itemPath>dsp.h</itemPath>
       <itemPath>hardware.h</itemPath>
       <itemPath>init_ADC.c</itemPath>
@@ -30,16 +27,14 @@
       <itemPath>medium_event.c</itemPath>
       <itemPath>medium_event.h</itemPath>
       <itemPath>pid.s</itemPath>
-      <itemPath>slow_event.c</itemPath>
-      <itemPath>slow_event.h</itemPath>
-      <itemPath>snapshot.h</itemPath>
       <itemPath>traps.c</itemPath>
       <itemPath>init_IC.c</itemPath>
       <itemPath>init_IC.h</itemPath>
-      <itemPath>usart.c</itemPath>
-      <itemPath>usart.h</itemPath>
       <itemPath>tuning.c</itemPath>
       <itemPath>tuning.h</itemPath>
+      <itemPath>commutation_states.h</itemPath>
+      <itemPath>motor_isr.c</itemPath>
+      <itemPath>motor_isr.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -60,7 +55,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>XC16</languageToolchain>
-        <languageToolchainVersion>1.24</languageToolchainVersion>
+        <languageToolchainVersion>1.25</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <compileType>

@@ -39,7 +39,7 @@
 *   loop startup ramp
 **********************************************************************/
 #include "general.h"
-#include "Motor_isr.h"
+#include "motor_isr.h"
 #include "dsp.h"
 #include "tuning.h"
 #include "hardware.h"

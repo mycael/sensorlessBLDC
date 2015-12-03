@@ -2,6 +2,17 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/GoogleDrive/workMPLAB/dsPIC30F3011_Projects/sensorlessBLDC_v0.5/main.c</file>
+            <file>file:/D:/GoogleDrive/workMPLAB/dsPIC30F3011_Projects/sensorlessBLDC_v0.5/Motor_isr.c</file>
+            <file>file:/D:/GoogleDrive/workMPLAB/dsPIC30F3011_Projects/sensorlessBLDC_v0.5/medium_event.c</file>
+            <file>file:/D:/GoogleDrive/workMPLAB/dsPIC30F3011_Projects/sensorlessBLDC_v0.5/general.h</file>
+            <file>file:/D:/GoogleDrive/workMPLAB/dsPIC30F3011_Projects/sensorlessBLDC_v0.5/init_ADC.c</file>
+            <file>file:/D:/GoogleDrive/workMPLAB/dsPIC30F3011_Projects/sensorlessBLDC_v0.5/init_PWM.c</file>
+            <file>file:/D:/GoogleDrive/workMPLAB/dsPIC30F3011_Projects/sensorlessBLDC_v0.5/Motor_isr.h</file>
+            <file>file:/D:/GoogleDrive/workMPLAB/dsPIC30F3011_Projects/sensorlessBLDC_v0.5/tuning.c</file>
+            <file>file:/D:/GoogleDrive/workMPLAB/dsPIC30F3011_Projects/sensorlessBLDC_v0.5/traps.c</file>
+            <file>file:/D:/GoogleDrive/workMPLAB/dsPIC30F3011_Projects/sensorlessBLDC_v0.5/pid.s</file>
+        </group>
     </open-files>
 </project-private>
