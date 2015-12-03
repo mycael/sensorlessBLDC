@@ -1,7 +1,7 @@
 #include "dsp.h"
 #include "general.h"
 #include "hardware.h"
-#include "Motor_isr.h"
+#include "motor_isr.h"
 
 unsigned int lock1_demand;			// demand for first lock (duty cycle in %)
 unsigned int lock2_demand;			// demand for second lock (duty cycle in %)
@@ -34,12 +34,12 @@ struct parameter_limits
 
 // Hard code motor parameters here 
 volatile unsigned int Lock1Demand = 30;			// % demand for first lock position
-volatile unsigned int Lock2Demand = 20;			// % demand for second lock position
-volatile unsigned int Lock1Duration = 300;		// Lock duration in 1ms increments
-volatile unsigned int Lock2Duration = 100;		// Lock duration in 1ms increments
+volatile unsigned int Lock2Demand = 25;			// % demand for second lock position
+volatile unsigned int Lock1Duration = 200;		// Lock duration in 1ms increments
+volatile unsigned int Lock2Duration = 150;		// Lock duration in 1ms increments
 volatile unsigned int RampStartDemand = 54;		// % demand at the beginning of the open-loop starting ramp
 volatile unsigned int RampEndDemand = 60;		// % demand at the end of the open-loop starting ramp
-volatile unsigned int RampDuration = 450;		// Ramp duration in 1ms increments
+volatile unsigned int RampDuration = 500;		// Ramp duration in 1ms increments
 volatile unsigned int RampStartSpeed = 200;		// Speed (in RPM) at the beginning of the open-loop starting ramp
 volatile unsigned int RampEndSpeed = 2200;		// Speed (in RPM) at the end of the open-loop starting ramp
 volatile unsigned int MaxMotorSpeed = 8000;     // Maximum speed of the motor - used to normalize the potentiometer speed adjustment

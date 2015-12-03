@@ -2,9 +2,9 @@
 #include "hardware.h"
 #include "IIR_Filter.h"
 #include "BEMF_filter.h"
-#include "Hall_States.h"
+#include "commutation_states.h"
 #include "tuning.h"
-#include "Motor_isr.h"
+#include "motor_isr.h"
 #include "snapshot.h"
 
 
@@ -45,6 +45,9 @@ volatile struct ControlFlags ControlFlags;
 unsigned int pos_ptr = 0;
 
 unsigned int SpeedReference = 0;
+unsigned int SpeedReferenceFil[3];
+unsigned int fil_i=0;
+unsigned int SpeedReferenceOld = 0;
 unsigned int MotorOffCounter = 0;
 unsigned int MotorOnCounter = 0;
 unsigned long AccConsumption = 0;
@@ -506,9 +509,29 @@ void __attribute__((__interrupt__, no_auto_psv)) _IC1Interrupt( void )
         /* Fcy at 29491200 Hz                                                 */
         /**********************************************************************/
         
-        //SpeedReference = (((long)IC1BUF)*((long)MaxMotorSpeed))/((long)55296); 
-        //SpeedReference = (((long)IC1BUF)*((long)MaxMotorSpeed))/((long)27648); 
-        SpeedReference = (long)(((float)IC1BUF) * SPEED_REFERENCE_SCALE_FACTOR);
+        // SpeedReferenceFil : 3 levels buffer for median filter
+        SpeedReferenceFil[fil_i] = (int)(((float)IC1BUF) * SPEED_REFERENCE_SCALE_FACTOR);
+        fil_i++;
+        if(fil_i >= 3) fil_i=0;
+        
+        // Median Filter
+        if((SpeedReferenceFil[0] >= SpeedReferenceFil[1]) && (SpeedReferenceFil[0] >= SpeedReferenceFil[2]))
+        {
+            if((SpeedReferenceFil[1] > SpeedReferenceFil[2])) SpeedReference = SpeedReferenceFil[1];
+            else SpeedReference = SpeedReferenceFil[2];
+        }
+        else if((SpeedReferenceFil[1] >= SpeedReferenceFil[0]) && (SpeedReferenceFil[1] >= SpeedReferenceFil[2]))
+        {
+            if((SpeedReferenceFil[0] > SpeedReferenceFil[2])) SpeedReference = SpeedReferenceFil[0];
+            else SpeedReference = SpeedReferenceFil[2];
+        }
+        else if((SpeedReferenceFil[2] >= SpeedReferenceFil[0]) && (SpeedReferenceFil[2] >= SpeedReferenceFil[1]))
+        {
+            if((SpeedReferenceFil[0] > SpeedReferenceFil[1])) SpeedReference = SpeedReferenceFil[0];
+            else SpeedReference = SpeedReferenceFil[1];
+        }
+
+        
         if (SpeedReference < (START_MOTOR_VALUE-20))
         {
             //SpeedReference = (START_MOTOR_VALUE-20);
