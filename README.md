@@ -19,8 +19,10 @@ ___
 
 ## 2. Software Specifications
 
+### Key points
 * Firmware based on dsPIC30F3011
 * Cycle frequency : 29 491 200 Hz (7.3728 MHz crystal with PLL 16x)
+* Median filter to avoid command reading error
 
 ### Input PWM signal (speed setpoint) :
 
@@ -34,8 +36,36 @@ In the equation above, *Speed* and *MaxMotorSpeed* are given in RPM (Revolutions
 
 *Period* should be 25% greater than *MaxPulseWidth*
 
-*MaxPulseWidth* and *MaxMotorSpeed* can be set in software in *tuning.c* file.
+*MaxPulseWidth* and *MaxMotorSpeed* can be set in software in *general.h* file (see next part).
 
+### Basic configuration
+In the *general.f* file, you can change some parameters : 
+- line 5 : You can adjust **motor** PWM frequency (min: 10kHz, max: 30kHz, default: 20Hz)
+``` c 
+#define   FPWM	  20000   // Hz
+```
+
+- line 8 : Set the maximum motor speed in RPM
+``` c 
+#define   MAX_MOTOR_SPEED     8000.0    // rpm
+```
+
+- line 11 : Set the speed at which the motor starts to spin (min: 2200, max: MAX_MOTOR_SPEED, default: 2200)
+``` c 
+#define   START_MOTOR_VALUE   2200	// rpm
+```
+
+- line 14 : Set the command pulse width which will correpond to the maximum motor speed (1)
+``` c 
+#define   MAX_PULSE_WIDTH     0.015   // sec 
+```
+
+(1) This controller can not perform clockwise or anticlockwise direction in the same application, under the start motor speed value (START_MOTOR_VALUE), the motor is stopped. To make the motor turns in an other direction, switch 2 phases between motor and controller.
+
+### Advanced configuration
+In the file *tuning.c*, you can change different parameter to enhance motor startup.
+
+...
 ___
 
 ## 3. Hardware Specifications
