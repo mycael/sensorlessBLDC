@@ -1,1 +1,0 @@
-void SlowEvent(void);
