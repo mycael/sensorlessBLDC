@@ -3,7 +3,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>sensorlessBLDC</name>
+            <name>sensorlessBLDC_v0.6</name>
             <creation-uuid>71b52bde-91b8-4c46-8621-716080febe35</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>

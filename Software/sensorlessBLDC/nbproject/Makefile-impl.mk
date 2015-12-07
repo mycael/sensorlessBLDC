@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=sensorlessBLDC
+PROJECTNAME=sensorlessBLDC_v0.6
 
 # Active Configuration
 DEFAULTCONF=default

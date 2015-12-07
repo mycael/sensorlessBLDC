@@ -1,6 +1,11 @@
 #include "general.h"
 
-
+/*---------------------------------------------------------------------
+  Function Name: Init_IC
+  Description:   Initialize Input Capture module
+  Inputs:        None
+  Returns:       None
+-----------------------------------------------------------------------*/
 void Init_IC(void)
 {
     IC1CONbits.ICTMR = 1;   // Timer2

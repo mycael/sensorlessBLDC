@@ -10,6 +10,12 @@
 #define FAULT_CAUSES_PWM_SHUTDOWN 0x0007;       // An over-current fault shuts down PWM1L/H, PWM2L/H, PWM3L/H   
 #define NO_FAULT_PROTECTION       0x0000;       // No over-current protection
 
+/*---------------------------------------------------------------------
+  Function Name: Init_PWM
+  Description:   Initialize PWM module
+  Inputs:        None
+  Returns:       None
+-----------------------------------------------------------------------*/
 void Init_PWM(void)
 {
 	OVDCON = 0;

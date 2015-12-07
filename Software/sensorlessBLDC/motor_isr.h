@@ -21,16 +21,11 @@ void Commutate(unsigned int sector);
 struct ControlFlags{
         unsigned	RunMotor:1; 	
         unsigned	HighSpeedMode:1;
-        unsigned 	TakeSnapshot:1;
 		unsigned 	MediumEventFlag:1;
-		unsigned	SlowEventFlag:1;
-		unsigned	SpeedControlEnable:1;
-		unsigned	EnablePotentiometer:1;
-        unsigned   	:9;
+        unsigned   	:13;
 }; 
 
 extern volatile struct ControlFlags ControlFlags;
-
 extern unsigned int ZeroCrossPeriodFalling[8];
 extern unsigned int ZeroCrossPeriodRising[8];
 extern unsigned int RunMode;
@@ -42,6 +37,5 @@ extern int vbus;
 extern int Sector;
 extern unsigned long Speed;
 extern unsigned int OneEightyDegreeTime[16];
-
 extern unsigned int SpeedReference;
 extern unsigned char comError;

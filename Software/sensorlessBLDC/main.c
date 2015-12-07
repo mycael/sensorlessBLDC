@@ -1,16 +1,7 @@
 /**********************************************************************
 * Project Name :   sensorlessBLDC
-* Dependencies:    general.h
-*                  init_PWM.h
-*                  init_ADC.h
-*                  IIR_Filter.h
-*                  BEMF_filter.h
-*                  Motor_isr.h
-*                  slow_event.h
-*                  medium_event.h
-*                  dsp.h
 * Processor:       dsPIC30F3011
-* Compiler:        MPLAB® XC16
+* Compiler:        MPLAB XC16
 *
 * SOFTWARE LICENSE AGREEMENT:
 * This software is based on a Microchip software. The Microchip Licence
@@ -52,12 +43,9 @@
 #include "IIR_Filter.h"
 #include "BEMF_filter.h"
 #include "motor_isr.h"
-//#include "slow_event.h"
 #include "medium_event.h"
 #include "dsp.h"
 #include "init_IC.h"
-
-
 
 // Setup Configuration bits
 // FOSC
@@ -89,12 +77,7 @@
 
 int main ( void )
 {
-    //char string[20];
     int i, j;
-	ControlFlags.EnablePotentiometer = 1;   // enable speed/demand potentiometer VR1
-	#ifdef PID_SPEED_LOOP
-		ControlFlags.SpeedControlEnable = 1; // enable speed control loop
-	#endif
 
     TRISD = 0x0001; // RD0 input for input capture
     TRISC = 0x0000;

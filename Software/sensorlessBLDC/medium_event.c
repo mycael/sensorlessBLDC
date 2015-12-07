@@ -1,41 +1,9 @@
 /**********************************************************************
-* © 2005 Microchip Technology Inc.
-*
-* FileName:        medium_event.c
-* Dependencies:    general.h
-*                  Motor_isr.h
-*                  dsp.h
-*                  TuningInterface.h
-*                  hardware.h
-* Processor:       dsPIC30F3010
-* Compiler:        MPLAB® C30 v2.00.00 or higher
-*
-* SOFTWARE LICENSE AGREEMENT:
-* Microchip Technology Inc. (“Microchip”) licenses this software to you
-* solely for use with Microchip dsPIC® digital signal controller
-* products. The software is owned by Microchip and is protected under
-* applicable copyright laws.  All rights reserved.
-*
-* SOFTWARE IS PROVIDED “AS IS.”  MICROCHIP EXPRESSLY DISCLAIMS ANY
-* WARRANTY OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING BUT NOT
-* LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-* PARTICULAR PURPOSE, OR NON-INFRINGEMENT. IN NO EVENT SHALL MICROCHIP
-* BE LIABLE FOR ANY INCIDENTAL, SPECIAL, INDIRECT OR CONSEQUENTIAL
-* DAMAGES, LOST PROFITS OR LOST DATA, HARM TO YOUR EQUIPMENT, COST OF
-* PROCUREMENT OF SUBSTITUTE GOODS, TECHNOLOGY OR SERVICES, ANY CLAIMS
-* BY THIRD PARTIES (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF),
-* ANY CLAIMS FOR INDEMNITY OR CONTRIBUTION, OR OTHER SIMILAR COSTS.
-*
-* REVISION HISTORY:
-*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-* Author        Date       Comments on this revision
-*   R. Condit	 3/6/06     First revision
-*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * Notes:
 *   The MediumEvent() routine is called once every 1ms during normal 
 *	operation.  During the start-up ramp this is called once every 100us.
 *   The frequency that this routine is called during the startup 
-*   in increased to allow for higher end motor speeds during the open
+*   is increased to allow for higher end motor speeds during the open
 *   loop startup ramp
 **********************************************************************/
 #include "general.h"
@@ -118,30 +86,22 @@ void MediumEvent(void)
 				//  equation.)
 				Speed = (unsigned long)(__builtin_divud(((unsigned long)ElectricalSpeed*120),NoOfMotorPoles));
 
-				if (ControlFlags.SpeedControlEnable)
-				{
-					PIDStructure.controlReference = SpeedReference;
-					PIDStructure.measuredOutput = Speed;
-					PID(&PIDStructure);
-					if (PIDStructure.controlOutput < 0)
-						PIDStructure.controlOutput = 0;
-					if (PIDStructure.controlOutput > 32439) 
-					{
-						PDC1 = FULL_DUTY;
-						PIDStructure.controlOutput = 32439;
-					}
-					else
-						PDC1 = __builtin_divud((FULL_DUTY*PIDStructure.controlOutput),32439);
-					PDC2 = PDC1;
-					PDC3 = PDC1;
-				}
-				else if (ControlFlags.EnablePotentiometer)
-				{
-					PDC1 = (unsigned int) ((unsigned long)pot*FULL_DUTY/0x3FF);
-					PDC2 = PDC1;
-					PDC3 = PDC1;
-				}
-
+                PIDStructure.controlReference = SpeedReference;
+                PIDStructure.measuredOutput = Speed;
+                PID(&PIDStructure);
+                
+                if (PIDStructure.controlOutput < 0)
+                    PIDStructure.controlOutput = 0;
+                if (PIDStructure.controlOutput > 32439) 
+                {
+                    PDC1 = FULL_DUTY;
+                    PIDStructure.controlOutput = 32439;
+                }
+                else PDC1 = __builtin_divud((FULL_DUTY*PIDStructure.controlOutput),32439);
+                    
+                PDC2 = PDC1;
+                PDC3 = PDC1;
+				
 				break;
 			case SENSORLESS_INIT:
                 

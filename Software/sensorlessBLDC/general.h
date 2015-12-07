@@ -4,6 +4,9 @@
 // PWM frequency
 #define	FPWM	20000
 
+// Number of motor poles (not pole-pairs)
+#define N_OF_MOTOR_POLES    14
+
 // Motor maximum speed in RPM
 #define MAX_MOTOR_SPEED     8000.0    // rpm
 
