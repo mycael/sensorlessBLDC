@@ -10,10 +10,11 @@ The Controller is currently tested on Turnigy D2836/8 1100kv motor.
 ___
 
 ## 1. General Characteristics
--	Current: 120A
+-	Current: 80A
 -	Voltage: 10 to 20V (3S, 4S, and 5S Lipo) 
 -	Power dissipation without heatsink : 300W
 -	Speed setpoint set with PWM signal 
+-	SPI 3 wires communication : an other board with MCU can access some informations (real motor speed, current consumption, etc ...)
 
 ___
 
